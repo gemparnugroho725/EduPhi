@@ -1,0 +1,19 @@
+<form name="kirim-ke-google-sheet">
+    <input name="nama" type="text" placeholder="Nama" required>
+    <input name="email" type="email" placeholder="Email" required>
+    <input name="phone" type="tel" placeholder="Telepon" required>
+    <button type="submit">Kirim</button>
+  </form>
+  
+  <script>
+    const scriptURL = '<https://script.google.com/macros/s/AKfycbzOMRhKRr8cSIccq-3N3Kd3lkv2hfn_v2s86UNrPMCJ988CvlBLcfUobCC8RvNwHHEj/exec>'
+    const form = document.forms['kirim-ke-google-sheet']
+  
+    form.addEventListener('submit', e => {
+      e.preventDefault()
+      fetch(scriptURL, { method: 'POST', body: new FormData(form) })
+        .then(response => console.log('Berhasil!', response))
+        .catch(error => console.error('Kesalahan!', error))
+    })
+  </script>
+  
